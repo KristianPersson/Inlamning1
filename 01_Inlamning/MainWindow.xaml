@@ -5,60 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_01_Inlamning"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
+        Title="MainWindow" Height="600" Width="400">
     <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="btnAdd" Grid.Column="0" Grid.Row="1" Margin="50 20" Content="Lägg till deltagare" Click="btnAdd_Click"/>
-        <Button x:Name="btnView" Grid.Column="0" Grid.Row="2" Margin="50 20" Content="Lista på deltagare" Click="btnView_Click"/>
-        <Button x:Name="btnSale" Grid.Column="0" Grid.Row="3" Margin="50 20" Content="Rabattkod" Click="btnSale_Click"/>
-        <Button x:Name="btnQuit" Grid.Column="0" Grid.Row="4" Margin="50 20" Content="Avsluta programmet" Click="btnQuit_Click"/>
+        <Grid Grid.Row="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
 
-        <Border Grid.Row="0"
-            BorderBrush="Black"
-            BorderThickness="1"
-            Background="#c9c9c9"
-            HorizontalAlignment="Right"/>
-        <Border Grid.Row="1"
-            BorderBrush="Black"
-            BorderThickness="1"
-            Background="#c9c9c9"
-            HorizontalAlignment="Right"/>
-        <Border Grid.Row="2"
-            BorderBrush="Black"
-            BorderThickness="1"
-            Background="#c9c9c9"
-            HorizontalAlignment="Right"/>
-        <Border Grid.Row="3"
-            BorderBrush="Black"
-            BorderThickness="1"
-            Background="#c9c9c9"
-            HorizontalAlignment="Right"/>
-        <Border Grid.Row="4"
-            BorderBrush="Black"
-            BorderThickness="1"
-            Background="#c9c9c9"
-            HorizontalAlignment="Right"/>
-        <Border Grid.Row="5"
-            BorderBrush="Black"
-            BorderThickness="1"
-            Background="#c9c9c9"
-            HorizontalAlignment="Right"/>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnAdd" Grid.Column="0" Grid.Row="0" Margin="60 30 60 10" Content="Lägg till deltagare" Click="btnAdd_Click"/>
+                <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="0" Margin="60 30 60 10" Content="Lägg till deltagare" Click="btnAdd_Click"/>
+                <Button x:Name="btnAdd" Grid.Column="2" Grid.Row="1" Margin="60 30 60 10" Content="Lägg till deltagare" Click="btnAdd_Click"/>
+                <Button x:Name="btnAdd" Grid.Column="3" Grid.Row="1" Margin="60 30 60 10" Content="Lägg till deltagare" Click="btnAdd_Click"/>
+
+            </Grid>
+            
+           
+        </Grid>
+        
+        
+        
+
+        <ListView Grid.Row="1" Margin="10" >
+            <ListViewItem>Testar</ListViewItem>
+        </ListView>
 
     </Grid>
 </Window>
