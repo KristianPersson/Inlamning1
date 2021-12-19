@@ -6,56 +6,70 @@
         xmlns:local="clr-namespace:_01_Inlamning"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="400">
-    <Grid>
 
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="0.7*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
+            <TextBlock Grid.Row="0" Margin="30 10 230 30" Text="Förnamn"/>
+            <TextBox x:Name="firstName" Grid.Row="0" Margin="30 30 231 30 " HorizontalAlignment="Stretch" />
+
+            <TextBlock Grid.Row="0" Margin="231 10 30 30" Text="Efternamn"/>
+            <TextBox x:Name="lastName" Grid.Row="0" Margin="230 30 30 30" HorizontalAlignment="Stretch"/>
+
+            <TextBlock Grid.Row="0" Margin="30 80 30 0" Text="E-postadress"/>
+            <TextBox x:Name="email" Grid.Row="1" Margin="30 0 30 60"/>
+
+
+        </Grid>
+        
         <Grid Grid.Row="1">
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btnAdd" Grid.Column="0" HorizontalAlignment="Center" Margin="50 10" Content="Lägg till deltagare"/>
-                <Button x:Name="btnCode" Grid.Column="1" HorizontalAlignment="Center" Margin="10 10 50 10" Content="Rabattkod"/>
-                <TextBox x:Name="code" Grid.Column="1" Margin="120 10 10 10" />
-
-
-
+                <Button x:Name="btnAdd" Grid.Column="0" HorizontalAlignment="Center" Margin="10" Content="Lägg till deltagare" Click="btnAdd_Click"/>
+                <Button x:Name="btnCode" Grid.Column="1" HorizontalAlignment="Center" Margin="-20 10 50 10" Content="Rabattkod" Click="btnCode_Click"/>
+                <TextBox x:Name="code" Grid.Column="1" Margin="100 10 30 10" />
             </Grid>
-
-
         </Grid>
 
-        <Grid>
-            
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="2">
+            <StackPanel>
+                <TextBlock Text="Deltagare" FontSize="18" FontWeight="Medium"/>
+                <ListView x:Name="lvContacts" DataContext="_01_Inlamning.Models.Contacts">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Row="0" Margin="30 30 230 30 " HorizontalAlignment="Stretch" Text="test"/>
-            <TextBox Grid.Row="0" Margin="230 30 30 30" HorizontalAlignment="Stretch" Text="test"/>
-            
-            <TextBox Grid.Row="1" Margin="30 10 30 10" VerticalAlignment="Center" Text="test"/>
-            <TextBox Grid.Row="1" Margin="30 50 30 20" VerticalAlignment="Stretch"  Text="test"/>
+                                <Rectangle Grid.Column="0" Margin="0 0 10 0" Width="50" Height="50" Fill="LightGray"/>
+                                <StackPanel Grid.Column="1" Margin="0 0 0 0" VerticalAlignment="Center" >
+                                    <TextBlock FontSize="16" Text="{Binding FullName}"/>
+                                    <TextBlock FontSize="12" Text="{Binding Email}" />
+                                </StackPanel>
+                            </Grid>
 
-             
-
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                  
+                </ListView>
+            </StackPanel>
 
         </Grid>
-
-
-
-            <ListView Grid.Row="2" Margin="10" >
-            <ListViewItem>Testar</ListViewItem>
-        </ListView>
-
     </Grid>
 </Window>

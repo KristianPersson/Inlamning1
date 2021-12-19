@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _01_Inlamning.Models;
+using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.Json;
 
 namespace _01_Inlamning
 {
@@ -20,30 +23,45 @@ namespace _01_Inlamning
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static List<Contacts> contacts = new List<Contacts>();   
+      
+
         public MainWindow()
         {
             InitializeComponent();
+            if(contacts.Count > 0)
+                lvContacts.ItemsSource = contacts;
+            string json = JsonSerializer.Serialize(contacts);
         }
-
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            if(!string.IsNullOrEmpty(firstName.Text) && !string.IsNullOrEmpty(lastName.Text) && !string.IsNullOrEmpty(email.Text))
+            {
+                contacts.Add(new Contacts
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = firstName.Text,
+                    LastName = lastName.Text,
+                    Email = email.Text,
 
+                });
+                
+               //string filePath = @"C:\Users\KPKri\OneDrive\Documents\Text.txt";
+                //List<string> lines = new List<string>();
+                //lines = File.WriteAllText(filePath, json);
+                lvContacts.ItemsSource = new List<Contacts>();
+                lvContacts.ItemsSource = contacts;
+
+            }
         }
 
-        private void btnView_Click(object sender, RoutedEventArgs e)
+        private void btnCode_Click(object sender, RoutedEventArgs e)
         {
-
+            code.Text = "2022";
         }
-
-        private void btnSale_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnQuit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+    
+    
+    
     }
 }
