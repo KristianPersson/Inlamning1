@@ -24,28 +24,34 @@ namespace _01_Inlamning
     public partial class MainWindow : Window
     {
         private static List<Contacts> contacts = new List<Contacts>();   
-      
+        
 
         public MainWindow()
         {
+           
             InitializeComponent();
             if(contacts.Count > 0)
                 lvContacts.ItemsSource = contacts;
-            string json = JsonSerializer.Serialize(contacts);
+          
         }
-
+        
+        
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(firstName.Text) && !string.IsNullOrEmpty(lastName.Text) && !string.IsNullOrEmpty(email.Text))
+           
+            if (!string.IsNullOrEmpty(firstName.Text) && !string.IsNullOrEmpty(lastName.Text) && !string.IsNullOrEmpty(email.Text))
             {
+                string path = @"C:\\AAAA\\TextFile.txt";
+                string Space = "\n";
+                string Tab = "\t";
                 contacts.Add(new Contacts
                 {
                     Id = Guid.NewGuid(),
                     FirstName = firstName.Text,
                     LastName = lastName.Text,
                     Email = email.Text,
-
-                });
+                  
+            });
                 
                //string filePath = @"C:\Users\KPKri\OneDrive\Documents\Text.txt";
                 //List<string> lines = new List<string>();
@@ -53,7 +59,18 @@ namespace _01_Inlamning
                 lvContacts.ItemsSource = new List<Contacts>();
                 lvContacts.ItemsSource = contacts;
 
+                File.ReadAllText(path);
+                File.AppendAllText(path, firstName.Text);
+                File.AppendAllText(path, Tab);
+                File.AppendAllText(path, lastName.Text);
+                File.AppendAllText(path, Tab);
+                File.AppendAllText(path, email.Text);
+                File.AppendAllText(path, Space);
+
+
             }
+            
+
         }
 
         private void btnCode_Click(object sender, RoutedEventArgs e)
